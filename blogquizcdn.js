@@ -12,7 +12,6 @@ function generateQuiz(v) {
   }
 }
 
-
 function checkAnswer(e) {
   if (question.done != true) {
     let userChoice = e.innerText.slice(2).trim();
@@ -71,6 +70,5 @@ function nextQuestion() {
     
     </div>`;
     
-  
   }
 }
