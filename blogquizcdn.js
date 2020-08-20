@@ -25,22 +25,25 @@ function checkAnswer(e) {
         </svg>`
       document.querySelector("#scr").innerText = score;
       for (let i = 2; i <= 5; i++) {
-        document.querySelector(`#innerque > button:nth-child(${i})`).classList.add('disabled')
+        document.querySelector(`#innerque > button:nth-child(${i})`).disabled = true;
+        document.querySelector(`#innerque > button:nth-child(${i})`).style.opacity =0.7;
       }
-      e.classList.add("active")
+      e.style.opacity  =1;
     } else {
       for (let i = 2; i <= 5; i++) {
         let v = '';
         v = document.querySelector(`#innerque > button:nth-child(${i})`);
         if (v.innerText.slice(2).trim() == answer) {
-          v.classList.add("disabled")
+          v.disabled = true;
           v.innerHTML +=
             `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg>`
-          v.classList.add("active")
+          v.style.opacity  =1;
         } else {
           document.querySelector(`#innerque > button:nth-child(${i})`).classList.add("disabled")
+          document.querySelector(`#innerque > button:nth-child(${i})`).disabled = true;
+          document.querySelector(`#innerque > button:nth-child(${i})`).style.opacity =0.7;
         }
       }
       e.innerHTML +=
@@ -66,8 +69,7 @@ function nextQuestion() {
     justify-content: center;"><h2>Your score ${score}/${getData.length}</h2>
     
     </div>`;
-    if(score >7){
-      document.querySelector("#scorecard").innerHTML += `<img src="../images/giphy_1.gif"></img>`
-    }
+    
+  
   }
 }
