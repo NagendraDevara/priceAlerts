@@ -1,9 +1,9 @@
 function generateQuiz(v) {
   document.querySelector("#que").innerHTML = `<div id="innerque"  class="list-group  shadow p-1 bg-white rounded">
-  <button type="button" class="list-group-item list-group-item-action list-group-item-info fade show active" aria-current="true">
+  <div  class="list-group-item list-group-item-action list-group-item-info fade show active" aria-current="true">
   ${v.value.question}
 
-</button>
+</div>
   </div>`
   for (let i = 1; i <= 4; i++) {
     document.querySelector("#innerque").innerHTML += `
@@ -11,6 +11,7 @@ function generateQuiz(v) {
       </button>`
   }
 }
+
 
 function checkAnswer(e) {
   if (question.done != true) {
