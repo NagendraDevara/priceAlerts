@@ -1,0 +1,172 @@
+div#innerque {
+    width: 100%;
+    color: #fff;
+    height: 7%;
+    text-align: center;
+    background: #f0c27b;
+    background: linear-gradient(to right, #f0b07b, #4b1248);
+    border-color: #0c5460;
+
+  }
+
+  .bi-check-circle-fill {
+    animation: fadeIn ease 0.5s;
+  }
+
+  #scorecard>div {
+
+    display: flex;
+    background: cadetblue;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* svg {
+    width: 2em;
+    height: 1.3em;
+  } */
+
+  #innerque>button {
+    display: flex;
+    width: 100%;
+    height: 5%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(41, 52, 82);
+    color: #155724;
+    background-color: #c3e6cb;
+
+    border: 0.1px limegreen inset;
+    border-bottom-width: 0;
+    border-left-width: 0;
+  }
+
+  #innerque>button:nth-child(1) {
+    animation: fadeIn ease 0.8ms;
+
+  }
+
+  #innerque>button:nth-child(2) {
+    animation: fadeIn ease 0.5s;
+
+  }
+
+  #innerque>button:nth-child(3) {
+    animation: fadeIn ease 1s;
+
+  }
+
+  #innerque>button:nth-child(4) {
+    animation: fadeIn ease 1.5.s;
+
+  }
+
+  #innerque>button:nth-child(5) {
+    animation: fadeIn ease 1.8s;
+
+  }
+
+  /* .delay-list{
+  animation: fadeIn ease 10s;
+} */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #scorecard {
+    display: flex;
+    justify-content: center;
+  }
+
+  h2 {
+    color: black;
+  }
+
+  .checkmark {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
+
+  .checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+
+  .checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes scale {
+
+    0%,
+    100% {
+      transform: none;
+    }
+
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+
+  @keyframes fill {
+    100% {
+      box-shadow: inset 0px 0px 0px 30px #7ac142;
+    }
+  }
+
+  .test-icon .icon-path {
+    stroke-dashoffset: 100;
+    transition: all 700ms linear;
+  }
+
+  .test-icon .icon-path {
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .wrapper {
+    border-radius: 50%;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+   
+  }
+
+
+  .wrapper--close {
+    background: #833ab4;
+    background:  linear-gradient(to right, #fe8c00, #f83600);
+  }
