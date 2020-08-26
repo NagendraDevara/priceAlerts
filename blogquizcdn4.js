@@ -1,8 +1,7 @@
-    function generateQuiz(v) {
+  function generateQuiz(v) {
       document.querySelector("#que").innerHTML = `<div id="innerque"  class="list-group  shadow p-1 bg-white rounded">
   <div  class="list-group-item list-group-item-action list-group-item-info fade show active" aria-current="true">
   ${v.value.question}
-
 </div>
   </div>`
       for (let i = 1; i <= 4; i++) {
@@ -66,8 +65,8 @@
       } else {
         document.getElementById("que").remove();
         document.querySelector("#scorecard").innerHTML = `
-
-   <svg version="1.1" id="type-writer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+        <div class="score-card">
+        <svg version="1.1" id="type-writer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" width="295px" height="380px" viewBox="0 0 295 380" enable-background="new 0 0 295 380" xml:space="preserve">
 <path fill="#353535" d="M26.676,97.369c0,0,2.745,2.421,2.745,10.317h-2.745V97.369z"/>
 <path fill="#353535" d="M268.324,97.369c0,0-2.745,2.421-2.745,10.317h2.745V97.369z"/>
@@ -239,9 +238,58 @@
 <path id="key_0" fill="#F2F0D7" stroke="#92928D" stroke-miterlimit="10" d="M219.052,368.128c0,1.655-1.343,3-3.001,3H77.541
 	c-1.657,0-3-1.345-3-3v-9.438c0-1.658,1.343-3.001,3-3.001h138.51c1.658,0,3.001,1.343,3.001,3.001V368.128L219.052,368.128z"/>
 </svg>
-
-`;
-
+</div>
+        `
       }
+      el = {
+        svg: "#type-writer",
+        inkR: "#ink-tape-right",
+        inkL: "#ink-tape-left",
+        keys: "[id^='key_']",
+        paper: "#paper",
+        printBar: "#print-bar",
+        spaceBar: "#key_0",
+        heart: "#heart",
+      }
+
+      //printBar
+      TweenMax.to(el.printBar, 1, {
+        x: 70,
+      });
+      //ink wheel
+      TweenMax.to(el.inkR + "," + el.inkL, 1.1, {
+        transformOrigin: "center",
+        rotation: 360,
+        repeat: 1,
+        onRepeat: paperFull,
+      });
+      //keys
+      TweenMax.to(el.spaceBar, 1, {
+        scale: .96,
+        transformOrigin: "center",
+      });
+      //paper
+      TweenMax.to(el.paper, 1, {
+        y: -50,
+      });
+
+      function paperFull() {
+        TweenMax.to(el.paper, 1, {
+          y: -100,
+        });
+        TweenMax.to(el.printBar, .5, {
+          x: 70,
+          scale: -3
+        });
+        TweenMax.to(el.heart, .5, {
+          opacity: 1
+        });
+        TweenMax.to(el.printBar, .5, {
+          scale: 1
+        });
+        TweenMax.to(el.printBar, 1, {
+          x: 160,
+        });
+      }
+      
     }
- 
