@@ -1,4 +1,4 @@
-  function generateQuiz(v) {
+   function generateQuiz(v) {
       document.querySelector("#que").innerHTML = `<div id="innerque"  class="list-group  shadow p-1 bg-white rounded">
   <div  class="list-group-item list-group-item-action list-group-item-info fade show active" aria-current="true">
   ${v.value.question}
@@ -128,10 +128,10 @@
     
   }
   </style>
-  <foreignObject x="70" y="90"  width="180" height="150">
+  <foreignObject id="quiz-final-score" x="70" y="90"  width="180" height="150">
 
-    <div class="typewriter">
-  <h5>Your score  ${score}/${getData.length}</h5>
+    <div class="typewriter" id="queType">
+  <h5 id="heading-score">Your score  ${score}/${getData.length}</h5>
 </div>
   </foreignObject>
   </g>
@@ -240,56 +240,106 @@
 </svg>
 </div>
         `
-      }
-      el = {
-        svg: "#type-writer",
-        inkR: "#ink-tape-right",
-        inkL: "#ink-tape-left",
-        keys: "[id^='key_']",
-        paper: "#paper",
-        printBar: "#print-bar",
-        spaceBar: "#key_0",
-        heart: "#heart",
-      }
 
-      //printBar
-      TweenMax.to(el.printBar, 1, {
-        x: 70,
-      });
-      //ink wheel
-      TweenMax.to(el.inkR + "," + el.inkL, 1.1, {
-        transformOrigin: "center",
-        rotation: 360,
-        repeat: 1,
-        onRepeat: paperFull,
-      });
-      //keys
-      TweenMax.to(el.spaceBar, 1, {
-        scale: .96,
-        transformOrigin: "center",
-      });
-      //paper
-      TweenMax.to(el.paper, 1, {
-        y: -50,
-      });
 
-      function paperFull() {
-        TweenMax.to(el.paper, 1, {
-          y: -100,
-        });
-        TweenMax.to(el.printBar, .5, {
-          x: 70,
-          scale: -3
-        });
-        TweenMax.to(el.heart, .5, {
-          opacity: 1
-        });
-        TweenMax.to(el.printBar, .5, {
-          scale: 1
-        });
+        el = {
+          svg: "#type-writer",
+          inkR: "#ink-tape-right",
+          inkL: "#ink-tape-left",
+          keys: "[id^='key_']",
+          paper: "#paper",
+          printBar: "#print-bar",
+          spaceBar: "#key_0",
+          heart: "#heart",
+          foreign: '#quiz-final-score',
+          heading: "#heading-score"
+        }
+
+        //printBar
         TweenMax.to(el.printBar, 1, {
-          x: 160,
+          x: 70,
         });
+        //ink wheel
+        TweenMax.to(el.inkR + "," + el.inkL, 1.1, {
+          transformOrigin: "center",
+          rotation: 360,
+          repeat: 1,
+          onRepeat: paperFull,
+        });
+        //keys
+        TweenMax.to(el.spaceBar, 1, {
+          scale: .96,
+          transformOrigin: "center",
+        });
+        //paper
+        TweenMax.to(el.paper, 1, {
+          y: -50,
+        });
+        TweenMax.to(el.heading, 1, { opacity: 1, onComplete: fire_confetti_time, ease: Back.easeOut });
+        function fire_confetti_time() {
+          console.log('event logged')
+          console.log(score)
+          if (score >= getData.length / 2) {
+            setTimeout(() => {
+              fire_confetti()
+            }, 2800);
+          }
+
+        }
+        function paperFull() {
+          TweenMax.to(el.paper, 1, {
+            y: -100,
+          });
+          TweenMax.to(el.printBar, .5, {
+            x: 70,
+            scale: -3
+          });
+          TweenMax.to(el.heart, .5, {
+            opacity: 1
+          });
+          TweenMax.to(el.printBar, .5, {
+            scale: 1
+          });
+          TweenMax.to(el.printBar, 1, {
+            x: 160,
+          });
+        }
+
+        function fire_confetti() {
+          console.log('triggered answer')
+          var count = 200;
+          var defaults = {
+            origin: { y: 0.5 }
+          };
+
+          function fire(particleRatio, opts) {
+            confetti(Object.assign({}, defaults, opts, {
+              particleCount: Math.floor(count * particleRatio)
+            }));
+          }
+
+
+          fire(0.21, {
+            spread: 26,
+            startVelocity: 55,
+          });
+          fire(0.2, {
+            spread: 60,
+          });
+          fire(0.35, {
+            spread: 150,
+            decay: 0.91,
+          });
+          fire(0.1, {
+            spread: 120,
+            startVelocity: 25,
+            decay: 0.92,
+          });
+          fire(0.13, {
+            spread: 120,
+            startVelocity: 45,
+          });
+        }
       }
-      
     }
+
