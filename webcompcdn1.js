@@ -1,4 +1,4 @@
-et v = "indiacate variable";
+let v = "indiacate variable";
 class MyCountry extends HTMLElement {
   constructor() {
     super();
